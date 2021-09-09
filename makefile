@@ -6,7 +6,7 @@
 #    By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/08 12:56:39 by mjeyavat          #+#    #+#              #
-#    Updated: 2021/09/08 17:38:31 by mjeyavat         ###   ########.fr        #
+#    Updated: 2021/09/09 16:26:43 by mjeyavat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = fractols.c main.c\
+SRC = fractols.c main.c \
 
 OBJ = $(SRC:.c=.o);
 
