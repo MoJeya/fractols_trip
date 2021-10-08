@@ -6,13 +6,14 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:27 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/09/14 15:19:43 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/08 14:10:17 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef struct s_vars {
 	void 	*mlx;
@@ -22,6 +23,11 @@ typedef struct s_vars {
 	int		bits_per_pixel;
 	int		line_lenght;
 	int		endian;
-
 }	t_vars;
+
+typedef struct s_point {
+	int x;
+	int y;
+}	t_point;
+
 void start_fractols();
