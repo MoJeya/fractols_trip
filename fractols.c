@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:02 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/08 14:47:23 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/11 19:01:41 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,50 +25,70 @@ void	my_mlx_pixel_put(t_vars *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int clac_len(t_point p1, t_point p2)
+int	z_loop(double x, double y)
 {
-	int	len;
+	int		cnt;
 
-	len = (int)sqrt(((double)p1.x - (double)p2.x) +((double)p1.y - (double)p2.y));
-	printf("%d", len);
-	return (len);
+	x = (x*x) - (y*y) + x;
+	y = 2 * x * y + y;
+	cnt = 0;
+	while (cnt < 100)
+	{
+		x = (x*x) - (y*y) + x;
+		y = 2 * x * y + y;
+		if (abs((int)x + (int)y)>=2)
+			break;
+		cnt++;
+	}
+	if (cnt == 100)
+		return (1);
+	else
+		return (0);
 }
 
-/**
- * x und y muessen beide incrementiert werden
-*/
-
-void	draw_line(t_point p1, t_vars *my_data)
+void	fill_pane_w_pixle(double x, double y, t_vars *data)
 {
-	int	len;
+	double	max_x;
+	double	max_y;
+	double	x_p = -2;
+	double	y_p = -2;
 
-	len = 100;
-	while (len)
+	max_x = 1920;
+	max_y = 1080;
+	while (y < max_y)
 	{
-		my_mlx_pixel_put(my_data, p1.x, p1.y, 0x00FF0000);
-		p1.x++;
-		p1.y++;
-		--len;
+		if (x >= max_x)
+		{
+			x = 0;
+			x_p = -2;
+		}
+		while (x < max_x)
+		{
+			if (z_loop(x_p, y_p) == 1)
+				my_mlx_pixel_put(data, x, y, 0x00FF0000);
+			x_p += 0.1;
+			x++;
+		}
+		y_p += 0.1;
+		y++;
 	}
 }
 
-void start_fractols()
+void	start_fractols()
 {
-	t_vars my_data;
-	t_point p1;
-	t_point p2;
+	t_vars	my_data;
+	int	x;
+	int	y;
 
-	p1.x = 1920/2;
-	p1.y = 1080/2;
-	p2.x = p1.x + 100;
-	p2.y = p1.y + 100;
-	clac_len(p1, p2);
+	x = 0;
+	y = 0;
 	my_data.mlx = mlx_init();
 	my_data.win = mlx_new_window(my_data.mlx, 1920, 1080, "Fractols");
 	my_data.img = mlx_new_image(my_data.mlx, 1920, 1080);
-	my_data.addr = mlx_get_data_addr(my_data.img, &my_data.bits_per_pixel, &my_data.line_lenght, &my_data.endian);
+	my_data.addr = mlx_get_data_addr(my_data.img, &my_data.bits_per_pixel,
+			&my_data.line_lenght, &my_data.endian);
 	//? Here comes the code to put the pixels
-	draw_line(p1, &my_data);
+	fill_pane_w_pixle(x, y, &my_data);
 	mlx_put_image_to_window(my_data.mlx, my_data.win, my_data.img, 0, 0);
 	mlx_loop(my_data.mlx);
 }
