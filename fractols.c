@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:02 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/13 15:16:26 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/13 19:08:31 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,71 +26,66 @@ void	my_mlx_pixel_put(t_vars *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	z_loop(double x, double y)
+int mandel_loop(double x, double y)
 {
-	int		cnt;
-	double 	x_old;
-	double 	y_old;
+	int cnt;
+	double x_old;
+	double y_old;
+	double tmp;
+
 	cnt = 0;
-	while (cnt < 100)
+	x_old = x;
+	y_old = y;
+	while (cnt < 100 && (x_old*x_old) + (y_old*y_old) <= 4)
 	{
-		x_old = x;
-		y_old = y;
-		x = (x*x) - (y*y) + x_old;
-		y = 2 * x * y + y_old;
-		if (sqrt((x*x) + (y*y)) >= 2)
-			break;
+		tmp = x_old;
+		x_old = (x_old*x_old) - (y_old*y_old) + x;
+		y_old = 2 * tmp * y_old + y;
+		//z = sqrt((x_old*x_old) + (y_old*y_old));
+/*		if(z > 2)
+			break;*/
 		cnt++;
 	}
-	if (cnt == 100)
-		return (1);
-	else
-		return (0);
+	return (cnt);
 }
 
-void	fill_pane_w_pixle(double x, double y, t_vars *data)
+static int	create_trgb(int t, int r, int g, int b)
 {
-	double	max_x;
-	double	max_y;
-	double	x_p = -2;
-	double	y_p = -2;
-
-	max_x = (1920/2)+200;
-	max_y = (1080/2)+200;
-	while (y < max_y)
-	{
-		if (x == max_x)
-		{
-			x = (1920/2) - 200;
-			x_p = -2;
-		}
-		while (x < max_x)
-		{
-			if (z_loop(x_p, y_p) == 0)
-				my_mlx_pixel_put (data, x, y, 0x00FF0000);
-			x_p += 0.01;
-			x++;
-		}
-		y_p += 0.01;
-		y++;
-	}
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 void	start_fractols()
 {
 	t_vars	my_data;
-	int	x;
-	int	y;
+	double	x;
+	double	y;
+	int		i;
+	double	range;
 
-	x = (1920/2) - 200;
-	y = (1080/2) - 200;
+	x = 0;
+	y = 0;
+	my_data.x_max = 2;
+	my_data.x_min = -2;
+	my_data.y_max = 2;
+	my_data.y_min = -2;
 	my_data.mlx = mlx_init();
-	my_data.win = mlx_new_window(my_data.mlx, 1920, 1080, "Fractols");
-	my_data.img = mlx_new_image(my_data.mlx, 1920, 1080);
+	my_data.win = mlx_new_window(my_data.mlx, 600, 400, "Fractols");
+	my_data.img = mlx_new_image(my_data.mlx, 400, 400);
 	my_data.addr = mlx_get_data_addr(my_data.img, &my_data.bits_per_pixel,
 			&my_data.line_lenght, &my_data.endian);
 	//? Here comes the code to put the pixels
-	fill_pane_w_pixle(x, y, &my_data);
+	range = ((my_data.x_max - my_data.x_min )/ 400);
+	while (y < 400)
+	{
+		x = 0;
+		while (x < 400)
+		{
+			i = mandel_loop(my_data.x_min+x*range , my_data.y_max-y*range);
+			my_mlx_pixel_put(&my_data, x, y, create_trgb(0, 5, i * 5, i * 20));
+			x++;
+		}
+		y++;
+	}
 	mlx_put_image_to_window(my_data.mlx, my_data.win, my_data.img, 0, 0);
 	mlx_loop(my_data.mlx);
 

@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:27 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/08 15:42:43 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/13 18:21:49 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ typedef struct s_vars {
 	int		bits_per_pixel;
 	int		line_lenght;
 	int		endian;
+	double	x_min;
+	double	x_max;
+	double	y_min;
+	double	y_max;
 }	t_vars;
 
 typedef struct s_point {
