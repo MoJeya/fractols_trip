@@ -6,7 +6,7 @@
 #    By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/08 12:56:39 by mjeyavat          #+#    #+#              #
-#    Updated: 2021/09/09 16:26:43 by mjeyavat         ###   ########.fr        #
+#    Updated: 2021/10/20 17:12:47 by mjeyavat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = fractols.c main.c \
+SRC = fractols.c init.c draw_pixel.c event_handle.c main.c \
 
 OBJ = $(SRC:.c=.o);
 
-LINKED_OBJ = ./libft/*.o ./mlx/*.o
+LINKED_OBJ = ./mlx/*.o
 
 all:linked_objects $(NAME)
 
