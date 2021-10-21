@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:03:41 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/20 18:02:01 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/21 13:05:38 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,20 @@
 //	frac->min.y--;
 //}
 
-int	mouse_press_hook(int keycode/*, int x, int y,*/)
+int	mouse_press_hook(int keycode, int x, int y, t_fractol *frac)
 {
-	//if(keycode == 4)
-	//	ft_zoom(x, y, frac);
-	//else if (keycode == 5)
-	//	ft_dezoom(x, y, frac);
-	//start_fractols(frac);
-	printf("scroll up %d!\n", keycode);
+	printf("pointer: %p\n", &frac);
+	if (keycode == 5)
+	{
+		//funtion for mouse position
+		//ft_zoom(frac);
+		printf("mouse pos(%d ; %d)\n", x, y);
+		frac->max_iteration = 80;
+	}
+	if (keycode == 1)
+	{
+		printf("MAX_ITERATION: %d\n", frac->max_iteration);
+	}
 	return (0);
 }
 /**
@@ -50,9 +56,10 @@ int	mouse_press_hook(int keycode/*, int x, int y,*/)
  * 0 stands for allow every keypress
 */
 
-void	set_hooks(t_fractol frac)
+void	set_hooks(t_fractol *frac)
 {
-	mlx_do_key_autorepeatoff(frac.my_data->mlx);
-	mlx_hook(frac.my_data->win, 4, 0, mouse_press_hook, frac.my_data);
-	printf("%f\n",frac.pos.x);
+	printf("pointer: %p\n", frac);
+	mlx_do_key_autorepeatoff(frac->my_data->mlx);
+	mlx_hook(frac->my_data->win, 4, 0, mouse_press_hook, frac);
+	printf("max_iteration:%d\n", frac->max_iteration);
 }

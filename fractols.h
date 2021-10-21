@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:27 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/20 17:27:57 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/20 19:19:05 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
-
 
 typedef struct s_vars
 {
@@ -45,14 +44,15 @@ typedef struct s_fractol{
 	int		max_iteration;
 	t_point	max;
 	t_point	min;
-	t_point pos;
+	t_point	pos;
 }	t_fractol;
+
 void		my_mlx_pixel_put(t_vars *data, int x, int y, int color);
 t_vars		init_data(void);
-t_point 	init_pos(int x, int y);
+t_point		init_pos(int x, int y);
 t_fractol	init_fractol(t_vars *my_data, t_point pos);
 void		ft_zoom(int x, int y, t_fractol *frac);
-void		set_hooks(t_fractol frac);
+void		set_hooks(t_fractol *frac);
 int			start_fractols(t_fractol *fractol);
 
 #endif
