@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:02 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/22 19:04:37 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/22 20:28:43 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int	start_fractols(t_vars *fractol)
 	int			y;
 	double		range;
 
-	x = fractol->m_pos.x;
-	y = fractol->m_pos.y;
+	x = 0;
+	y = 0;
 	range = ((fractol->x_max - fractol->x_min) / 400);
 	while (y < 400)
 	{
