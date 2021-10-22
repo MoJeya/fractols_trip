@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:27 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/22 15:28:38 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/22 20:05:31 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@
 
 # define M_SCROLL_UP 5
 # define M_SCROLL_DOWN 4
-# define M_CLICK 1
+# define ML_CLICK 1
+# define MR_CLICK 2
+# define WINDOW_X 400
+# define WINDOW_Y 400
 
 typedef struct s_point
 {
@@ -30,19 +33,19 @@ typedef struct s_point
 
 typedef struct s_vars
 {
-	double	x_min;
-	double	x_max;
-	double	y_min;
-	double	y_max;
-	int		max_iter;
-	t_point	m_pos;
-	int		bits_per_pixel;
-	int		line_lenght;
-	int		endian;
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*addr;
+	double		x_min;
+	double		x_max;
+	double		y_min;
+	double		y_max;
+	int			max_iter;
+	t_point		m_pos;
+	int			bits_per_pixel;
+	int			line_lenght;
+	int			endian;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*addr;
 
 }	t_vars;
 

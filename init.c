@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:29:13 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/22 17:45:04 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/22 20:08:00 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ t_point init_pos(int x, int y)
 	pos.y = y;
 	return (pos);
 }
-

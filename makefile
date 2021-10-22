@@ -6,7 +6,7 @@
 #    By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/08 12:56:39 by mjeyavat          #+#    #+#              #
-#    Updated: 2021/10/20 17:12:47 by mjeyavat         ###   ########.fr        #
+#    Updated: 2021/10/22 20:20:54 by mjeyavat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = fractols.c init.c draw_pixel.c event_handle.c main.c \
 
 OBJ = $(SRC:.c=.o);
 
-LINKED_OBJ = ./mlx/*.o
+LINKED_OBJ = ./mlx/*.o ./libft/*.o
 
 all:linked_objects $(NAME)
 
@@ -28,7 +28,7 @@ $(NAME): $(OBJ)
 	$(CC) $(SRC) -Lmlx -lmlx -framework OpenGL -framework AppKit mlx/libmlx.a -o $(NAME)
 
 objects:
-	$(CC) $(CFLAGS) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(LINKED_OBJ)
 
 linked_objects:
 	make -C ./libft
