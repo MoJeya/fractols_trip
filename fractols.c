@@ -6,11 +6,16 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:02 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/27 17:25:31 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:44:13 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractols.h"
+
+double	inter_pol(double start, double end, double inter)
+{
+	return (start + (end - start) * inter);
+}
 
 static int	mandel_loop(double x, double y)
 {
@@ -49,12 +54,10 @@ int	start_fractols(t_vars *fractol)
 	int			x;
 	int			y;
 	double		range_x;
-	double		range_y;
 
 	x = fractol->s_pos.x;
 	y = fractol->s_pos.y;
 	range_x = ((fractol->x_max - fractol->x_min) / fractol->window_width_x);
-	range_y = ((fractol->y_max - fractol->y_min) / fractol->window_height_y);
 	while (y < 400)
 	{
 		x = 0;
@@ -62,7 +65,7 @@ int	start_fractols(t_vars *fractol)
 		{
 			color_shift = mandel_loop(fractol->x_min
 					+ x * range_x,
-					fractol->y_max - y * range_y);
+					fractol->y_max - y * range_x);
 			my_mlx_pixel_put(fractol, x, y,
 				create_trgb(0, 5, color_shift * 5,
 					color_shift * 20));

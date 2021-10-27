@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:27 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/27 17:22:48 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:44:15 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_vars
 
 void		my_mlx_pixel_put(t_vars *data, int x, int y, int color);
 void		init_data(t_vars *fractol);
+double		inter_pol(double start, double end, double inter);
 t_point		init_pos(int x, int y);
 void		set_hooks(t_vars *frac);
 int			start_fractols(t_vars *fractol);

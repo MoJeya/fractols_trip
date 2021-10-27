@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:03:41 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/27 18:21:10 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:44:04 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,12 @@
  * TODO: get mouse location x;y
 */
 
-static double inter_pol(double start, double end, double inter)
-{
-	return (start + (end - start) * inter);
-}
-
-void	set_mouse_pos(int x, int y, t_vars *frac)
+void	ft_zoom(t_vars *frac, int x, int y)
 {
 	frac->m_pos.x = (double)x / (frac->window_width_x
 			/ (frac->x_max - frac->x_min)) + frac->x_min;
 	frac->m_pos.y = (double)y / (frac->window_height_y
 			/ (frac->y_max - frac->y_min)) * -1 + frac->y_max;
-	printf("x_max: %f\n", frac->y_min);
-}
-
-void	ft_zoom(t_vars *frac)
-{
 	frac->x_max = inter_pol(frac->m_pos.x, frac->x_max, (1 / 1.10));
 	frac->y_max = inter_pol(frac->m_pos.y, frac->y_max, (1 / 1.10));
 	frac->x_min = inter_pol(frac->m_pos.x, frac->x_min, (1 / 1.10));
@@ -38,8 +28,12 @@ void	ft_zoom(t_vars *frac)
 	start_fractols(frac);
 }
 
-void	ft_dezoom(t_vars *frac)
+void	ft_dezoom(t_vars *frac, int x, int y)
 {
+	frac->m_pos.x = (double)x / (frac->window_width_x
+			/ (frac->x_max - frac->x_min)) + frac->x_min;
+	frac->m_pos.y = (double)y / (frac->window_height_y
+			/ (frac->y_max - frac->y_min)) * -1 + frac->y_max;
 	frac->x_max = inter_pol(frac->m_pos.x, frac->x_max, (1 / 0.80));
 	frac->y_max = inter_pol(frac->m_pos.y, frac->y_max, (1 / 0.80));
 	frac->x_min = inter_pol(frac->m_pos.x, frac->x_min, (1 / 0.80));
@@ -70,20 +64,13 @@ int	key_handel(int keycode, t_vars *frac)
 int	mouse_press_hook(int keycode, int x, int y, t_vars *frac)
 {
 	printf("Pointer: %p\n", &frac);
-	if (keycode == ML_CLICK)
-	{
-		set_mouse_pos(x, y, frac);
-		printf("mouse pos: (%f;%f)\n", frac->m_pos.x, frac->m_pos.y);
-	}
 	if (keycode == M_SCROLL_UP)
 	{
-		set_mouse_pos(x, y, frac);
-		ft_zoom(frac);
+		ft_zoom(frac, x, y);
 	}
 	if (keycode == M_SCROLL_DOWN)
 	{
-		set_mouse_pos(x, y, frac);
-		ft_dezoom(frac);
+		ft_dezoom(frac, x, y);
 	}
 	return (0);
 }
