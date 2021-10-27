@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:02 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/22 20:28:43 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/27 17:25:31 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,21 @@ int	start_fractols(t_vars *fractol)
 	int			color_shift;
 	int			x;
 	int			y;
-	double		range;
+	double		range_x;
+	double		range_y;
 
-	x = 0;
-	y = 0;
-	range = ((fractol->x_max - fractol->x_min) / 400);
+	x = fractol->s_pos.x;
+	y = fractol->s_pos.y;
+	range_x = ((fractol->x_max - fractol->x_min) / fractol->window_width_x);
+	range_y = ((fractol->y_max - fractol->y_min) / fractol->window_height_y);
 	while (y < 400)
 	{
 		x = 0;
 		while (x < 400)
 		{
 			color_shift = mandel_loop(fractol->x_min
-					+ x * range,
-					fractol->y_max - y * range);
+					+ x * range_x,
+					fractol->y_max - y * range_y);
 			my_mlx_pixel_put(fractol, x, y,
 				create_trgb(0, 5, color_shift * 5,
 					color_shift * 20));

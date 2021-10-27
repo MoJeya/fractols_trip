@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:29:13 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/22 20:08:00 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/27 17:23:27 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ void init_data(t_vars *fractol)
 	fractol->x_min = -2;
 	fractol->y_min = -2;
 	fractol->y_max = 2;
-	fractol->max_iter = 200;
+	fractol->window_width_x = 400;
+	fractol->window_height_y = 400;
 	fractol->m_pos.x = 0;
 	fractol->m_pos.y = 0;
+	fractol->s_pos.x = 0;
+	fractol->s_pos.y = 0;
 	fractol->mlx = mlx_init();
 	fractol->win = mlx_new_window(fractol->mlx, 600, 400, "Fractols");
 	fractol->img = mlx_new_image(fractol->mlx, 400, 400);

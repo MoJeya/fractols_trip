@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:27 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/22 20:05:31 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/27 17:22:48 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # define MR_CLICK 2
 # define WINDOW_X 400
 # define WINDOW_Y 400
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_W 13
 
 typedef struct s_point
 {
@@ -37,8 +41,10 @@ typedef struct s_vars
 	double		x_max;
 	double		y_min;
 	double		y_max;
-	int			max_iter;
+	int			window_width_x;
+	int			window_height_y;
 	t_point		m_pos;
+	t_point		s_pos;
 	int			bits_per_pixel;
 	int			line_lenght;
 	int			endian;
