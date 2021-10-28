@@ -6,13 +6,18 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:03:41 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/27 18:44:04 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/28 19:25:34 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractols.h"
 /**
- * TODO: get mouse location x;y
+ *TODO:
+ * 3) rebuild colorshift
+ * //1) implement move functionality
+ * //2) build iteration change on button press
+ * 4) claen up
+ * 5) multithreading
 */
 
 void	ft_zoom(t_vars *frac, int x, int y)
@@ -46,18 +51,43 @@ int	key_handel(int keycode, t_vars *frac)
 	if (keycode == KEY_W)
 	{
 		frac->y_max -= 0.05;
+		frac->y_min -= 0.05;
 		start_fractols(frac);
 	}
 	if (keycode == KEY_S)
 	{
 		frac->y_max += 0.05;
+		frac->y_min += 0.05;
 		start_fractols(frac);
 	}
 	if (keycode == KEY_D)
 	{
 		frac->x_max -= 0.05;
+		frac->x_min	-= 0.05;
 		start_fractols(frac);
 	}
+	if (keycode == KEY_A)
+	{
+		frac->x_max += 0.05;
+		frac->x_min += 0.05;
+		start_fractols(frac);
+	}
+	if (keycode == KEY_PLUS)
+	{
+		frac->max_calc += 20;
+		start_fractols(frac);
+	}
+	if (keycode == KEY_MINUS)
+	{
+		frac->max_calc -= 1;
+		start_fractols(frac);
+	}
+	if (keycode == COLOR_KEY)
+	{
+		frac->max_iter +=100;
+		start_fractols(frac);
+	}
+	printf("-:%d\n",keycode);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:27 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/27 18:44:15 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/28 19:14:32 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_W 13
+# define KEY_PLUS 69
+# define KEY_MINUS 78
+# define COLOR_KEY 8
 
 typedef struct s_point
 {
@@ -44,7 +47,9 @@ typedef struct s_vars
 	int			window_width_x;
 	int			window_height_y;
 	t_point		m_pos;
-	t_point		s_pos;
+	int			max_iter;
+	double		max_calc;
+	int			color_shift;
 	int			bits_per_pixel;
 	int			line_lenght;
 	int			endian;
