@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:02 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/28 19:16:04 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/29 16:41:00 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,61 +17,43 @@ double	inter_pol(double start, double end, double inter)
 	return (start + (end - start) * inter);
 }
 
-static int	mandel_loop(double x, double y, t_vars *fractol)
+void	put_color(t_vars *fr, int x, int y)
 {
-	int		cnt;
-	double	x_old;
-	double	y_old;
-	double	tmp;
-
-	cnt = 0;
-	x_old = x;
-	y_old = y;
-	while (cnt < fractol->max_iter && (x_old * x_old) + (y_old * y_old) <= fractol->max_calc)
-	{
-		tmp = x_old;
-		x_old = (x_old * x_old) - (y_old * y_old) + x;
-		y_old = 2 * tmp * y_old + y;
-		cnt++;
-	}
-	return (cnt);
+	my_mlx_pixel_put(fr, x, y,
+		create_trgb(0, 5, fr->color_shift * 5, fr->color_shift * 20));
 }
 
-static int	create_trgb(int t, int r, int g, int b)
+void	load_img(t_vars *fr)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	mlx_put_image_to_window(fr->mlx,
+		fr->win, fr->img, 0, 0);
 }
 
-void	put_color(t_vars *fractol, int x, int y)
+int	start_fractols(t_vars *fr)
 {
-	my_mlx_pixel_put(fractol, x, y,
-		create_trgb(0, 5, fractol->color_shift * 5, fractol->color_shift * 20));
-}
-
-int	start_fractols(t_vars *fractol)
-{
-	//int			color_shift;
 	int			x;
 	int			y;
-	double		range_x;
 
 	x = 0;
 	y = 0;
-	range_x = ((fractol->x_max - fractol->x_min) / fractol->window_width_x);
-	while (y < fractol->window_height_y)
+	fr->range.x = ((fr->x_max - fr->x_min) / fr->window_width_x);
+	fr->range.y = ((fr->y_max - fr->y_min) / fr->window_height_y);
+	while (y < fr->window_height_y)
 	{
 		x = 0;
-		while (x < fractol->window_width_x)
+		while (x < fr->window_width_x)
 		{
-			fractol->color_shift = mandel_loop(fractol->x_min
-					+ x * range_x,
-					fractol->y_max - y * range_x, fractol);
-			put_color(fractol, x, y);
+			fr->img_val.x = fr->x_min + x * fr->range.x;
+			fr->img_val.y = fr->y_max - y * fr->range.y;
+			if (fr->mod == 1)
+				fr->color_shift = mandel_loop(fr->img_val.x, fr->img_val.y, fr);
+			if (fr->mod == 2)
+				fr->color_shift = julia_loop(fr->img_val.x, fr->img_val.y, fr);
+			put_color(fr, x, y);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(fractol->mlx,
-		fractol->win, fractol->img, 0, 0);
+	load_img(fr);
 	return (0);
 }

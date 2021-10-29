@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:03:41 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/28 19:25:34 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/29 16:48:43 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	key_handel(int keycode, t_vars *frac)
 	if (keycode == KEY_D)
 	{
 		frac->x_max -= 0.05;
-		frac->x_min	-= 0.05;
+		frac->x_min -= 0.05;
 		start_fractols(frac);
 	}
 	if (keycode == KEY_A)
@@ -84,16 +84,14 @@ int	key_handel(int keycode, t_vars *frac)
 	}
 	if (keycode == COLOR_KEY)
 	{
-		frac->max_iter +=100;
+		frac->max_iter += 100;
 		start_fractols(frac);
 	}
-	printf("-:%d\n",keycode);
 	return (0);
 }
 
 int	mouse_press_hook(int keycode, int x, int y, t_vars *frac)
 {
-	printf("Pointer: %p\n", &frac);
 	if (keycode == M_SCROLL_UP)
 	{
 		ft_zoom(frac, x, y);
@@ -107,7 +105,6 @@ int	mouse_press_hook(int keycode, int x, int y, t_vars *frac)
 
 void	set_hooks(t_vars *frac)
 {
-	printf("Pointer: %p\n", &frac);
 	mlx_do_key_autorepeatoff(frac->mlx);
 	mlx_key_hook(frac->win, key_handel, frac);
 	mlx_hook(frac->win, 4, (1L<<2), mouse_press_hook, frac);
