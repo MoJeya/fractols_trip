@@ -6,13 +6,13 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:29:13 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/29 16:39:49 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/29 16:59:26 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractols.h"
 
-void init_data(t_vars *fractol)
+void	init_data(t_vars *fractol)
 {
 	fractol->mod = 0;
 	fractol->x_max = 3;
@@ -39,9 +39,9 @@ void init_data(t_vars *fractol)
 			&fractol->line_lenght, &fractol->endian);
 }
 
-t_point init_pos(int x, int y)
+t_point	init_pos(int x, int y)
 {
-	t_point pos;
+	t_point	pos;
 
 	pos.x = x;
 	pos.y = y;

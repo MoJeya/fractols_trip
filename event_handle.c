@@ -6,14 +6,15 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:03:41 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/29 16:48:43 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/29 18:43:23 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractols.h"
 /**
  *TODO:
- * 3) rebuild colorshift
+ *	1) clean up event heandle
+ * //3) rebuild colorshift
  * //1) implement move functionality
  * //2) build iteration change on button press
  * 4) claen up
@@ -86,6 +87,11 @@ int	key_handel(int keycode, t_vars *frac)
 	{
 		frac->max_iter += 100;
 		start_fractols(frac);
+	}
+	if (keycode == KEY_ESC)
+	{
+		mlx_destroy_image(frac->mlx, frac->img);
+		mlx_destroy_window(frac->mlx, frac->win);
 	}
 	return (0);
 }

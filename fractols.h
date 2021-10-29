@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:27 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/29 16:51:51 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/29 18:36:45 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define KEY_PLUS 69
 # define KEY_MINUS 78
 # define COLOR_KEY 8
+# define KEY_ESC 53
 
 typedef struct s_point
 {
