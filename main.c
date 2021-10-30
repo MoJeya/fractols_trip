@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 17:28:18 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/29 18:33:19 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/30 15:36:23 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ int	main(int argc, char *argv[])
 			fractol->mod = input;
 		if (input == 2)
 		{
-			fractol->c.x = -0.7269;
-			fractol->c.y = 0.1889;
+			fractol->c = fractol->p[fractol->p_cnt];
 			fractol->mod = input;
 		}
 		start_fractols(fractol);

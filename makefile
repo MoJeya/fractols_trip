@@ -6,7 +6,7 @@
 #    By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/08 12:56:39 by mjeyavat          #+#    #+#              #
-#    Updated: 2021/10/29 16:29:25 by mjeyavat         ###   ########.fr        #
+#    Updated: 2021/10/30 13:14:26 by mjeyavat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = fractols.c algorithms.c init.c draw_pixel.c event_handle.c main.c \
+SRC = fractols.c algorithms.c init.c draw_pixel.c event_tools.c event_handle.c main.c \
 
 OBJ = $(SRC:.c=.o);
 
