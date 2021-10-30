@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 13:12:18 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/30 15:48:11 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/30 16:05:37 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 void	ft_diff_point(t_vars *frac, int keycode)
 {
-	if (keycode == KEY_DOWN && frac->p_cnt <= 3 && frac->p_cnt > 0)
+	if (frac->mod == 2)
 	{
-		frac->p_cnt--;
-		frac->c = frac->p[frac->p_cnt];
-		start_fractols(frac);
-	}
-	if (keycode == KEY_UP && frac->p_cnt >= 0 && frac->p_cnt < 2)
-	{
-		frac->p_cnt++;
-		frac->c = frac->p[frac->p_cnt];
-		start_fractols(frac);
+		if (keycode == KEY_DOWN && frac->p_cnt <= 3 && frac->p_cnt > 0)
+		{
+			frac->p_cnt--;
+			frac->c = frac->p[frac->p_cnt];
+			start_fractols(frac);
+		}
+		if (keycode == KEY_UP && frac->p_cnt >= 0 && frac->p_cnt < 2)
+		{
+			frac->p_cnt++;
+			frac->c = frac->p[frac->p_cnt];
+			start_fractols(frac);
+		}
 	}
 }
 
