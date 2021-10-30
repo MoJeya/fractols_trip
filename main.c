@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 17:28:18 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/30 15:36:23 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/10/30 16:07:22 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	main(int argc, char *argv[])
 	init_data(fractol);
 	if (argc == 2)
 	{
-		ft_putstr_fd("The argument supplied is 2", 1);
 		input = ft_atoi(argv[1]);
 		if (input == 1)
 			fractol->mod = input;
