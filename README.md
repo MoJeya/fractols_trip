@@ -16,22 +16,22 @@ make
 You can run the programm with out any options, this will show you the man page
 
 ```
-./fractols.a
+./fractol
 ```
 to generate Mandelbrot-set
 ![Mandelbrot](/image/Mandelbrot-set.png)
 ```
-./fractols.a 1
+./fractol 1
 ```
 for julia set
 ![Julia-set](/image/julia-set-0.png)
 ```
-./fractols.a 2
+./fractol 2
 ```
 and for the Burningship-set
 ![Burningship-set](/image/burningship-set.png)
 ```
-./fractols.a 3
+./fractols 3
 ```
 
 # controls

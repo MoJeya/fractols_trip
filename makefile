@@ -6,11 +6,11 @@
 #    By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/08 12:56:39 by mjeyavat          #+#    #+#              #
-#    Updated: 2021/11/02 16:39:51 by mjeyavat         ###   ########.fr        #
+#    Updated: 2021/11/02 18:38:43 by mjeyavat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractols.a
+NAME = fractol
 
 CC = gcc
 
