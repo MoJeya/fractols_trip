@@ -27,9 +27,9 @@ for julia set
 ![Julia-set](/image/julia-set-3.png)
 ```
 ./fractols.a 2
-![Burningship-set](/image/burningship-set.png)
 ```
 and for the Burningship-set
+![Burningship-set](/image/burningship-set.png)
 ```
 ./fractols.a 3
 ```
