@@ -24,7 +24,7 @@ to generate Mandelbrot-set
 ./fractols.a 1
 ```
 for julia set
-![Julia-set](/image/julia-set-3.png)
+![Julia-set](/image/julia-set-0.png)
 ```
 ./fractols.a 2
 ```
@@ -35,10 +35,14 @@ and for the Burningship-set
 ```
 
 # controls
-**ESC** 			-> quit the programm
-**SCROLL_UP** 		-> Zoom in
-**SCROLL_DOWN**		-> Zoom out
-**ARROWKEY_UP**		-> change to diffrent julia-set point
-**ARROWKEY_DOWN**	-> change to diffrent julia-set point
-**KEY_C**			-> change color and max_iteration
+<ul>
+
+<li> **ESC** 			-> quit the programm </li>
+<li> **SCROLL_UP** 		-> Zoom in</li>
+<li> **SCROLL_DOWN**	-> Zoom out</li>
+<li> **ARROWKEY_UP**	-> change to diffrent julia-set point</li>
+<li> **ARROWKEY_DOWN**	-> change to diffrent julia-set point</li>
+<li> **KEY_C**			-> change color and max_iteration</li>
+
+</ul>
 
