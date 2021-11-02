@@ -6,7 +6,7 @@
 /*   By: mjeyavat <mjeyavat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:45:27 by mjeyavat          #+#    #+#             */
-/*   Updated: 2021/10/30 16:18:54 by mjeyavat         ###   ########.fr       */
+/*   Updated: 2021/11/02 15:19:49 by mjeyavat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void		ft_dezoom(t_vars *frac, int x, int y);
 void		ft_movement(int keycode, t_vars *frac);
 void		set_hooks(t_vars *frac);
 double		inter_pol(double start, double end, double inter);
+int			burningship_loop(double x, double y, t_vars *fractol);
 int			mandel_loop(double x, double y, t_vars *fractol);
 int			julia_loop(double x, double y, t_vars *fractol);
 void		load_img(t_vars *fr);
