@@ -40,9 +40,10 @@ and for the Burningship-set
 <li> **ESC** 			-> quit the programm </li>
 <li> **SCROLL_UP** 		-> Zoom in</li>
 <li> **SCROLL_DOWN**	-> Zoom out</li>
-<li> **ARROWKEY_UP**	-> change to diffrent julia-set point</li>
-<li> **ARROWKEY_DOWN**	-> change to diffrent julia-set point</li>
+<li> **KEY_W**			-> change to diffrent julia-set point</li>
+<li> **KEY_S**			-> change to diffrent julia-set point</li>
 <li> **KEY_C**			-> change color and max_iteration</li>
+<li> **ARROW_KEY(S)		-> to move around</li>
 
 </ul>
 
